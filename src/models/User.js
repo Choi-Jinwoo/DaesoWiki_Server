@@ -16,11 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    name: {
-      field: 'grade',
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   }, {
     tableName: 'user',
     timestamps: false,
