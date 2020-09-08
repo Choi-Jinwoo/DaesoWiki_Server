@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(cors());
 
 const router = require('./router');
 
+app.use(authMiddleware);
 app.use('/api', router);
 
 app.listen(8080, () => {

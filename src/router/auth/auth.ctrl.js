@@ -14,6 +14,9 @@ exports.login = async (req, res) => {
         if (user) {
             return res.status(200).json({
                 message: "로그인 성공",
+                data: {
+                    user: user.id
+                }
             });
         }
 

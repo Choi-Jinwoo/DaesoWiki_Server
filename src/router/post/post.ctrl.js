@@ -1,8 +1,9 @@
 const models = require('../../models');
+const PostLike = require('../../models/PostLike');
 
 exports.post = async (req, res) => {
     const { body } = req;
-
+    
     try {
         await models.post.create({
             title: body.title,
@@ -22,15 +23,38 @@ exports.post = async (req, res) => {
 }
 
 exports.like= async (req, res) => {
-    const { body } = req;
+    const { body, user } = req;
     
     try {
-        const like = await models.post.findOne({
-            where: {
-                thumbnail: body.thumbnail,
-            }
-        });
+        if (!user) {
+            return res.status(401).json({
+                message: "로그인 후 이용해주세요",
+            });
+        }
 
+        const existLike =await models.PostLike.findOne({
+            where: {
+                userId: user.id,
+                postIdx: body.postIdx
+            },
+        })
+
+        if (existLike) {
+            if (existLike == user) {
+                return res.status(200).json({
+                    message: "좋아요 취소",
+                });
+            }
+            else {
+                return res.status(200).json({
+                    message: "좋아요 성공",
+                });
+            }
+        }
         
+    } catch (err) {
+        return res.status(500).json({
+            message: "서버 오류",
+        });
     }
 }
