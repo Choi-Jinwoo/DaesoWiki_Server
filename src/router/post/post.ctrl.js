@@ -1,11 +1,10 @@
 const models = require('../../models');
-const PostLike = require('../../models/PostLike');
 
 exports.post = async (req, res) => {
     const { body } = req;
     
     try {
-        await models.post.create({
+        await models.Post.create({
             title: body.title,
             content: body.content,
             category: body.category,
@@ -22,7 +21,7 @@ exports.post = async (req, res) => {
     }
 }
 
-exports.like= async (req, res) => {
+exports.like = async (req, res) => {
     const { body, user } = req;
     
     try {
@@ -32,11 +31,11 @@ exports.like= async (req, res) => {
             });
         }
 
-        const existLike =await models.PostLike.findOne({
+        const existLike = await models.PostLike.findOne({
             where: {
                 userId: user.id,
-                postIdx: body.postIdx
-            },
+                postIdx: body.postIdx,
+            }
         })
 
         if (existLike) {
@@ -52,6 +51,39 @@ exports.like= async (req, res) => {
             }
         }
         
+    } catch (err) {
+        return res.status(500).json({
+            message: "서버 오류",
+        });
+    }
+}
+
+exports.postget = async (req, res) => {
+    const {postIdx} = req.query;
+
+    try {
+        const post = await models.Post.findAll ({
+            order: [
+                ['createdAt', 'DESC'],
+            ]
+        });
+
+        const postLike = await models.PostLike.findAll({
+            where: {
+                postIdx,
+            },
+            raw: true,
+        });
+
+        post.likeCount = postLike.length;
+
+        return res.status(200).json*({
+            message: '조회 성공',
+            data: {
+                post,
+            }
+        })
+
     } catch (err) {
         return res.status(500).json({
             message: "서버 오류",
