@@ -9,11 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const router = express.Router();
-
-// router
-router.post('/register', login.register);
-router.post('/login', login.login)
+const router = require('./router');
 
 app.use('/api', router);
 
