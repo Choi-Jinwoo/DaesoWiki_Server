@@ -1,35 +1,30 @@
 export default (sequelize, DataTypes) => {
-  const Post = sequelize.define('user', {
-    idx: {
-      field: 'idx',
+  const Comment = sequelize.define('user', {
+    id: {
+      field: 'id',
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    title: {
-      field: 'title',
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     content: {
       field: 'content',
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    thumbnail: {
-      field: 'thumbnail',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
-      field: 'category',
+    user_id: {
+      field: 'user_id',
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    post_idx: {
+      field: 'post_idx',
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   }, {
-    tableName: 'post',
+    tableName: 'comment',
     timestamps: false,
   });
 
-  return Post;
+  return Comment;
 }

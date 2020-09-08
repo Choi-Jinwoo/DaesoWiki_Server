@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) => {
-  const Post = sequelize.define('user', {
+  const Slang = sequelize.define('user', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    title: {
-      field: 'title',
+    grade: {
+      field: 'grade',
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -16,20 +16,15 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    thumbnail: {
-      field: 'thumbnail',
+    title: {
+      field: 'title',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
-      field: 'category',
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
-    tableName: 'post',
+    tableName: 'slang',
     timestamps: false,
   });
 
-  return Post;
+  return Slang;
 }
