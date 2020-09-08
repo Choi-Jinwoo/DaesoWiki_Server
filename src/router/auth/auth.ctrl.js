@@ -1,5 +1,5 @@
-const { User } = require('../../models');
+const {User} = require('../../models');
 
 export const login = (req, res) => {
-
+    console.log(User.findAll());
 }
