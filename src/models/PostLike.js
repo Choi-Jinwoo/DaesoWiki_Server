@@ -1,30 +1,25 @@
 export default (sequelize, DataTypes) => {
-  const Slang_history = sequelize.define('user', {
+  const PostLike = sequelize.define('user', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    user_id: {
+    userId: {
       field: 'user_id',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    slang_idx: {
-      field: 'slang_idx',
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    time: {
-      field: 'time',
-      type: DataTypes.DATETIME,
+    postIdx: {
+      field: 'post_idx',
+      type: DataTypes.text,
       allowNull: false,
     },
   }, {
-    tableName: 'slang_history',
+    tableName: 'post_like',
     timestamps: false,
   });
 
-  return Slang_history;
+  return PostLike;
 }

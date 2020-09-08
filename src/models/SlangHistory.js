@@ -1,18 +1,18 @@
 export default (sequelize, DataTypes) => {
-  const Post_history = sequelize.define('user', {
+  const SlangHistory = sequelize.define('user', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    user_id: {
+    userId: {
       field: 'user_id',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_idx: {
-      field: 'post_idx',
+    slangIdx: {
+      field: 'slang_idx',
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -22,9 +22,9 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {
-    tableName: 'post_history',
+    tableName: 'slang_history',
     timestamps: false,
   });
 
-  return Post_history;
+  return SlangHistory;
 }

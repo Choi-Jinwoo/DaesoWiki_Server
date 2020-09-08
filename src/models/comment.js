@@ -1,7 +1,7 @@
 export default (sequelize, DataTypes) => {
   const Comment = sequelize.define('user', {
-    id: {
-      field: 'id',
+    idx: {
+      field: 'idx',
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -11,12 +11,12 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
+    userId: {
       field: 'user_id',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_idx: {
+    postIdx: {
       field: 'post_idx',
       type: DataTypes.INTEGER,
       allowNull: false,
