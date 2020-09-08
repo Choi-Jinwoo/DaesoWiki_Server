@@ -26,6 +26,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: new Date(),
+    }
   }, {
     tableName: 'post',
     timestamps: false,
