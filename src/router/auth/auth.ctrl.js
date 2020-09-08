@@ -32,33 +32,32 @@ exports.register = async (req, res) => {
     const { body } = req;
 
     try {
-    
-        models.user.findOne({
+
+        const data = await models.user.findOne({
             where: {
                 id: body.id,
-                pw: body.pw,
             },
         });
 
-        if( (data == null || data == undefined) === false ) {
+        if (data) {
             return res.status(401).json({
                 message: '이미 사용중인 ID입니다.',
             });
         }
 
         models.user.create({
-                id: body.id,
-                pw: body.pw,
-                grade: body.grade,
-            })
-            .then(function(createdUserCore) {
+            id: body.id,
+            pw: body.pw,
+            grade: body.grade,
+        })
+            .then(function (createdUserCore) {
                 return res.status(200).json({
                     message: "회원가입 성공",
                 });
             })
-        } catch (err) {
-            return res.status(500).json({
-                message: "서버 오류",
-            });
-        }
+    } catch (err) {
+        return res.status(500).json({
+            message: "서버 오류",
+        });
+    }
 }
