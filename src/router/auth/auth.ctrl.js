@@ -45,16 +45,15 @@ exports.register = async (req, res) => {
             });
         }
 
-        models.user.create({
+        await models.user.create({
             id: body.id,
             pw: body.pw,
             grade: body.grade,
         })
-            .then(function (createdUserCore) {
-                return res.status(200).json({
-                    message: "회원가입 성공",
-                });
-            })
+
+        return res.status(200).json({
+            message: "회원가입 성공",
+        })
     } catch (err) {
         return res.status(500).json({
             message: "서버 오류",
