@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) => {
-  const PostHistory = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const PostHistory = sequelize.define('post_history', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
     },
     time: {
       field: 'time',
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   }, {

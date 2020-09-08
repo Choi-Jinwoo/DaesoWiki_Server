@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) => {
-  const PostLike = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const PostLike = sequelize.define('post_like', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
     },
     postIdx: {
       field: 'post_idx',
-      type: DataTypes.text,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   }, {

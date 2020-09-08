@@ -1,5 +1,4 @@
 const express = require("express");
-const login = require('./app');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -13,4 +12,6 @@ const router = require('./router');
 
 app.use('/api', router);
 
-app.listen(8080);
+app.listen(8080, () => {
+  console.log("start");
+});

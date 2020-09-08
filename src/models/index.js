@@ -1,17 +1,35 @@
-const Comment = require('./Comment');
-const Post = require('./Post');
-const PostHistory = require('./PostHistory');
-const PostLike = require('./PostLike');
-const Slang = require('./Slang');
-const SlangHistory = require('./SlangHistory');
-const User = require('./User');
+const Sequelize = require('sequelize');
 
-export default {
-  Comment,
-  Post,
-  PostHistory,
-  PostLike,
-  Slang,
-  SlangHistory,
-  User,
+const sequelize = new Sequelize('wiki', 'root', 'chlwlsdn', {
+  host: 'localhost',
+  dialect: 'mysql',
+  logging: false,
+
+  define: {
+    timestamps: false,
+  },
+});
+
+const CommentFun = require('./Comment')
+const PostFun = require('./Post');
+const PostHistoryFun = require('./PostHistory');
+const PostLikeFun = require('./PostLike');
+const SlangFun = require('./Slang');
+const SlangHistoryFun = require('./SlangHistory');
+const UserFun = require('./User');
+
+module.exports = {
+  Comment: CommentFun(sequelize, Sequelize),
+  Post: PostFun(sequelize, Sequelize),
+  PostHistory: PostHistoryFun(sequelize, Sequelize),
+  PostLike: PostLikeFun(sequelize, Sequelize),
+  Slang: SlangFun(sequelize, Sequelize),
+  SlangHistory: SlangHistoryFun(sequelize, Sequelize),
+  User: UserFun(sequelize, Sequelize),
 }
+
+sequelize.sync().then(() => {
+  console.log('[Model] Databases sync');
+}).catch((err) => {
+  console.log(err.message);
+});

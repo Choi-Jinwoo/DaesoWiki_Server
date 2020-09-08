@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) => {
-  const Slang = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const Slang = sequelize.define('slang', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,

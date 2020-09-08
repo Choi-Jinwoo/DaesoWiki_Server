@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) => {
-  const Post = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const Post = sequelize.define('post', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,

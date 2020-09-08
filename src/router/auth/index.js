@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authCtrl = require('./auth.ctrl');
 
-router.get('/login', authCtrl.login);
+router.post('/login', authCtrl.login);
 
-export default router;
+module.exports = router;

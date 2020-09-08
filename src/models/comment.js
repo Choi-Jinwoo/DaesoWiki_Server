@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) => {
-  const Comment = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  const Comment = sequelize.define('comment', {
     idx: {
       field: 'idx',
       type: DataTypes.INTEGER,
